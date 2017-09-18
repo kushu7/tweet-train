@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kushu7/tweet-train#readme",
   "dependencies": {
+    "express": "^4.15.4",
     "twit": "^2.2.9"
   }
 }
