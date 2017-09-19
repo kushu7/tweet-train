@@ -1,3 +1,6 @@
 9/18/2017, 5:26:43 PM : Method = getTweets |  Error = Error: getaddrinfo ENOENT api.twitter.com:443|
 9/18/2017, 5:26:43 PM : Method = getTweets |  Error = Error: getaddrinfo ENOENT api.twitter.com:443|
 9/18/2017, 5:31:39 PM : Method = tweetIt |  Error = Error: getaddrinfo ENOENT api.twitter.com:443|
+9/19/2017, 12:55:43 AM : Method = header |  Error = [object Object]|
+9/19/2017, 1:05:17 AM : Method = header |  Error = [object Object]|
+9/19/2017, 1:09:15 AM : Method = header |  Error = [object Object]|

@@ -5,7 +5,8 @@ var fs = require('fs');
 var url = require('url');
 var path= require('path');
 var os = require('os'); 
-
+var Twitter = require('twitter-oauth-agent');
+var request = require('request');
 
 
 //**************Usable variables*********************//
@@ -23,8 +24,55 @@ var server = app.listen(3000,'0.0.0.0',function(){ //0.0.0.0 Listening to machin
 	console.log('Listening on ' + host + ":" + port);
 });
 
+ 
+// Get the token and send to the client 
+app.get('/',function(req,res)
+{
+Twitter({
+  consumer_key: 'rW6qlDclrN6NcHOagfo7KusqA',
+  consumer_secret: 'bkprRlY9qRen0NWbOMIabmZlLlf6VlDFogn1BA7pXxjlBgbwaV',
+  callback: 'http://127.0.0.1:3000/twitter/callback'
+}, function(err, token) {
+  if (err) return res.status(500).send({ error: err.message });
+  var link = 'https://api.twitter.com/oauth/authenticate?oauth_token='+token.oauth_token+'&prompt=consent';
+  res.writeHead(301,{Location:link});
+ 
+console.log('redirect');  res.end();
+});
+});
 
+app.get('/twitter/callback',function(req,res)
+{ 
+var query = url.parse(req.url,true).query;
+var oauth_verifier = oauth_verifier;
+var oauth_token = query.oauth_token;
+getKeys(oauth_verifier,oauth_token);	
+});
 
+ function getKeys(oauth_verifier,oauth_token){
+            var clientServerOptions = {
+                uri: 'https://api.twitter.com/oauth/access_token',
+                method: 'POST',
+                headers: {
+					Authorization: OAuth oauth_consumer_key="cChZNFj6T5R0TigYB9yd1w",
+                     oauth_nonce="a9900fe68e2573b27a37f10fbad6a755",
+                     oauth_signature="39cipBtIOHEEnybAR4sATQTpl2I%3D",
+                     oauth_signature_method="HMAC-SHA1",
+                     oauth_timestamp="1318467427",
+                     oauth_token="NPcudxy0yU5T3tBzho7iCotZ3cnetKwcTIRlX0iwRl0",
+                     oauth_version="1.0",
+					
+                    'Content-Type': 'Content-Type: application/x-www-form-urlencoded'
+                }
+            }
+            request(clientServerOptions, function (error, response) {
+                console.log(error,response.body);
+                return;
+            });
+        }
+		
+		
+		
 app.use(express.static('pages')); //using sttic page direcectory
 app.get('/',function(req,res){
 	res.writeHead(200);
