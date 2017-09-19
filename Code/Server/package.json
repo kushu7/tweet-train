@@ -18,9 +18,13 @@
   "homepage": "https://github.com/kushu7/tweet-train#readme",
   "dependencies": {
     "express": "^4.15.4",
+    "json-stringify": "^1.0.0",
+    "oauth-open": "^1.0.3",
+    "querystring": "^0.2.0",
     "superagent": "^3.6.0",
     "twit": "^2.2.9",
     "twitter-auto-oauth": "0.0.2",
-    "twitter-oauth-agent": "^1.0.2"
+    "twitter-oauth-agent": "^1.0.2",
+    "window-popup": "^1.0.1"
   }
 }
